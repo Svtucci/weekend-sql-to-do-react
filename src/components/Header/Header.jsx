@@ -4,7 +4,7 @@ function Header() {
 
     return(
         <header>
-            <h1>TASK LIST:</h1>
+            <h4>SUBMIT YOUR TASK HERE </h4>
         </header>
     );
 }
