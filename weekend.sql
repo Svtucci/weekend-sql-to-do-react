@@ -1,9 +1,10 @@
 CREATE TABLE "taskList" (
 	"id" SERIAL PRIMARY KEY,
 	"task" varchar(255),
-	"status" BOOLEAN DEFAULT false
+	"description" varchar(255)
 );
 	
-SELECT * FROM "taskList" ;
+SELECT * FROM "taskList";
 
-INSERT INTO "taskList" ("task", "status") 
+INSERT INTO "taskList" ("task", "description") 
+			VALUES ('Mow the lawn', 'The grass grew, go mow it');

@@ -18,10 +18,10 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     console.log('POST Request made for /tasks');
     console.log(req.body);
-    let taskToAdd = req.body;
-    let queryTasks = `INSERT INTO "taskList" ("task", "status")
+    const task = req.body;
+    let queryTasks = `INSERT INTO "taskList" ("task", "description")
                       VALUES ($1, $2)`;
-    pool.query(queryTasks, [taskToAdd.name, taskToAdd.status]).then ((result) => {
+    pool.query(queryTasks, [task.name, task.description]).then ((result) => {
         res.sendStatus(201);
     }).catch((error) => {
         console.log(`Error in POST ${error}`);

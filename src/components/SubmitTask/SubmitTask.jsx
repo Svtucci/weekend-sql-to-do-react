@@ -1,11 +1,13 @@
 import React from 'react';
+import axios from 'axios';
+import TaskList from './TaskList.jsx'
 
 function SubmitTask({taskName, setTaskName, taskDescription, setTaskDescription, fetchTaskList}) {
     const submitForm = (e) => {
         e.preventDefault();
-        Axios.post('/taskList', {
+        axios.post('/todo', {
             take: taskName,
-            status: taskDescription,
+            description: taskDescription,
         }).then((response) => {
             setTaskName('');
             setTaskDescription('');
@@ -22,6 +24,7 @@ function SubmitTask({taskName, setTaskName, taskDescription, setTaskDescription,
             <input type="text"
                    id={taskName}
                    onChange={(e) => setTaskName(e.target.value)} />
+                   <br />
             Description:
             <input type="text"
                    id={taskDescription}

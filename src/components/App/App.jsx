@@ -12,7 +12,7 @@ function App () {
       <h1>TO DO APP</h1>
       
         <Header />
-        <SubmitTask />
+        {/* <SubmitTask /> */}
         {/* <CompleteTask />
         <DeleteTask /> */}
         <TaskList />
