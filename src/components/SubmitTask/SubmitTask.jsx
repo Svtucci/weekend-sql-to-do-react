@@ -6,7 +6,7 @@ function SubmitTask({taskName, setTaskName, taskDescription, setTaskDescription,
     const submitForm = (e) => {
         e.preventDefault();
         axios.post('/todo', {
-            take: taskName,
+            task: taskName,
             description: taskDescription,
         }).then((response) => {
             setTaskName('');

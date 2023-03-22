@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
     const task = req.body;
     let queryTasks = `INSERT INTO "taskList" ("task", "description")
                       VALUES ($1, $2)`;
-    pool.query(queryTasks, [task.name, task.description]).then ((result) => {
+    pool.query(queryTasks, [task.task, task.description]).then ((result) => {
         res.sendStatus(201);
     }).catch((error) => {
         console.log(`Error in POST ${error}`);
@@ -30,6 +30,7 @@ router.post('/', (req, res) => {
 });
 
 // PUT will take updated info from DOM, send to DB to be udpated and then resent to DOM
+
 
 // DELETE will delete w/e id we choose 
 
