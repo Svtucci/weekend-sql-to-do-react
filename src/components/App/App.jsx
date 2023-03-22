@@ -3,7 +3,7 @@ import CompleteTask from '../CompleteTask/CompleteTask.jsx';
 import DeleteTask from '../DeleteTask/DeleteTask.jsx';
 import Header from '../Header/Header.jsx';
 import SubmitTask from '../SubmitTask/SubmitTask.jsx';
-
+import TaskList from '../SubmitTask/TaskList.jsx'; 
 
 function App () {
   
@@ -15,7 +15,7 @@ function App () {
         <SubmitTask />
         {/* <CompleteTask />
         <DeleteTask /> */}
-        
+        <TaskList />
     </div>
   );
 
