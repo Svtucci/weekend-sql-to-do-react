@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import SubmitTask from './SubmitTask.jsx';
+import { useState, useEffect} from 'react';
+
 
 function TaskList () {
     const [taskName, setTaskName] = useState('');
@@ -8,7 +10,7 @@ function TaskList () {
     const [listOfTasks, setListOfTasks] = useState([]);
 
     const fetchTaskList = () => {
-        axios.get('/task').then((response) => {
+        axios.get('/todo').then((response) => {
             setListOfTasks(response.data);
         }).catch((error) => {
             console.log(`Error in GET ${error}`);
@@ -23,16 +25,22 @@ function TaskList () {
 
     return (
         <div>
-            {/* <SubmitTask /> */}
+            <SubmitTask
+            taskName={taskName}
+            setTaskName={setTaskName}
+            taskDescription={taskDescription}
+            setTaskDescription={setTaskDescription}
+            fetchTaskList={fetchTaskList}
+            /> 
 
             <h2>Task-List</h2>
 
             <ul>
                 {
-                    listOfTasks.map((task) => (
-                        <li key={task.id}>
-                           Task:{task.name} 
-                           Description: {task.description}
+                    listOfTasks.map((taskList) => (
+                        <li key={taskList.id}>
+                           Task:{taskList.name} 
+                           Description: {taskList.status}
                         </li>
                     ))
                 }

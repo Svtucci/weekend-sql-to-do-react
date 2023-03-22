@@ -1,11 +1,11 @@
 import React from 'react';
 
-function SubmitTask() {
+function SubmitTask({taskName, setTaskName, taskDescription, setTaskDescription, fetchTaskList}) {
     const submitForm = (e) => {
         e.preventDefault();
         Axios.post('/taskList', {
             take: taskName,
-            description: taskDescription,
+            status: taskDescription,
         }).then((response) => {
             setTaskName('');
             setTaskDescription('');

@@ -4,6 +4,6 @@ CREATE TABLE "taskList" (
 	"status" BOOLEAN DEFAULT false
 );
 	
-SELECT * FROM "taskList";
+SELECT * FROM "taskList" ;
 
 INSERT INTO "taskList" ("task", "status") 

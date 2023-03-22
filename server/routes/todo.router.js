@@ -4,12 +4,12 @@ const pool = require('../modules/pool.js');
 
 // GET will pull from the weekend-to-do-app DB
 router.get('/', (req, res) => {
-    let queryDataBase = 'SELECT * FROM "taskList";';
+    const queryDataBase = 'SELECT * FROM "taskList";';
     pool.query(queryDataBase).then((result) => {
-        console.log(result);
+        console.log(`Got stuff from DB`, result);
         res.send(result.rows);
     }).catch((error) => {
-        console.log(`Error in GET ${error}`)
+        console.log(`Error in GET ${queryDataBase}`, error)
         res.sendStatus(500);
     })
 });
