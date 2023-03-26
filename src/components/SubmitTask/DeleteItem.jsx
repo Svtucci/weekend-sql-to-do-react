@@ -7,6 +7,7 @@ import { useState, useEffect} from 'react';
 // after the assignment is compelete 
 
 function DeleteItem({taskList, fetchTaskList}) {
+
     const removeTask = (e) => {
         console.log(`removeTask ${taskList.id}`);
         axios.delete(`/todo/${taskList.id}`).then((response) => {
@@ -16,6 +17,16 @@ function DeleteItem({taskList, fetchTaskList}) {
             alert('Something went wrong!');
         })
     }
+    const completeTask = (complete) => {
+        console.log(`completeTask ${taskList.id}`);
+        axios.put(`/todo/${taskList.id}`).then((response) => {
+            fetchTaskList();
+        }).catch((error) => {
+            console.log(`Error in complettask ${error}`);
+            alert('Something went wong!');
+        })
+    }
+
     
 
     return (
@@ -26,7 +37,7 @@ function DeleteItem({taskList, fetchTaskList}) {
             Description: {taskList.description}
             <br />
             <button onClick={(e) => removeTask(e)}>Delete</button>
-            <button onclick>Completed</button>
+            <button>Completed</button>
         </li>
         <br />
         </>
