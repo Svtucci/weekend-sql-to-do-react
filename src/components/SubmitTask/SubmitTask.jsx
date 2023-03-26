@@ -16,7 +16,9 @@ function SubmitTask({taskName,
             description: taskDescription,
             completionstatus: false, 
         }).then((response) => {
+            console.log(taskName)
             setTaskName('');
+            console.log(taskName); 
             setTaskDescription('');
             setCompletionStatus('');
             fetchTaskList();

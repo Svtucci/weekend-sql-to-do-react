@@ -4,9 +4,9 @@ const pool = require('../modules/pool.js');
 
 // GET will pull from the weekend-to-do-app DB
 router.get('/', (req, res) => {
-    const queryDataBase = 'SELECT * FROM "taskList";';
+    const queryDataBase = 'SELECT * FROM "taskList" ORDER BY "id" DESC;';
     pool.query(queryDataBase).then((result) => {
-        console.log(`Got stuff from DB`, result);
+        // console.log(`Got stuff from DB`, result);
         res.send(result.rows);
     }).catch((error) => {
         console.log(`Error in GET ${queryDataBase}`, error)
@@ -34,10 +34,10 @@ router.post('/', (req, res) => {
 // I know the taskUPDATE is the id, and the poolquery should be changed, but unsure of what is should be 
 
 router.put('/:id', (req, res) => {
-    console.log('PUT request made for /tasks');
-    const taskUpdate = req.params.id;
-    const queryText = `UPDATE "taskList" SET "task" = $1, "description" = $2, "completionstatus" = $3 WHERE "id" = $4`; 
-    pool.query(queryText, [taskUpdate.task, taskUpdate.description, taskUpdate.completionstatus, taskUpdate]).then ((result) => {
+    console.log('PUT request made for /tasks', req.body);
+    let taskUpdate = req.body
+    const queryText = `UPDATE "taskList" SET "completionstatus" = $1 WHERE "id" = $2`; 
+    pool.query(queryText, [true, taskUpdate.id]).then ((result) => {
         res.sendStatus(200);
     }).catch((error) => {
         console.log(`Error in PUT ${error}`);

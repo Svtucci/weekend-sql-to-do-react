@@ -20,7 +20,7 @@ function DeleteItem({taskList, fetchTaskList}) {
     }
     const completeTask = () => {
         console.log(`completeTask ${taskList.id}`);
-        axios.put(`/todo/${taskList.id}`).then((response) => {
+        axios.put(`/todo/${taskList.id}`, taskList).then((response) => {
             setCompleted(true);
             fetchTaskList();
         }).catch((error) => {
@@ -29,31 +29,32 @@ function DeleteItem({taskList, fetchTaskList}) {
         })
     }
 
-    // let completionstatus;
-    // if (taskList.completionstatus === true) {
-    //     completionstatus = "Yes"
-    // } else if (taskList.completionstatus === false) {
-    //     completionstatus = "No"
-    // }
+    let completionstatus;
+    if (taskList.completionstatus === true) {
+        completionstatus = "Yes"
+    } else if (taskList.completionstatus === false) {
+        completionstatus = "No"
+    }
     
-    // const completedTaskStrike = () => {
-    //     if (completionstatus === "Yes") {
-    //         return 'line-through';
-    //     } else {
-    //         return 'none'
-    //     }
-    // };
+    const completedTaskStrike = () => {
+        if (completionstatus === "Yes") {
+            return 'line-through';
+        } else {
+            return 'none'
+        }
+    };
     
 
     return (
         <>
-        <li>
+        <li style={{textDecoration: completedTaskStrike()}}>
             Task:{taskList.task} 
             <br />
             Description: {taskList.description}
             <br />
+            Completed: {completionstatus}
             <button onClick={(e) => removeTask(e)}>Delete</button>
-            {/* <button onClick={() => completeTask()}>Completed</button> */}
+            <button onClick={() => completeTask()}>Completed</button>
         </li>
         <br />
         </>
