@@ -37,7 +37,7 @@ router.put('/:id', (req, res) => {
     console.log('PUT request made for /tasks');
     const taskUpdate = req.params.id;
     const queryText = `UPDATE "taskList" SET "task" = $1, "description" = $2, "completionstatus" = $3 WHERE "id" = $4`; 
-    pool.query(queryText, [taskUpdate.task, taskUpdate.description, taskUpdate.completionstatus, taskUpdate.taskId]).then ((result) => {
+    pool.query(queryText, [taskUpdate.task, taskUpdate.description, taskUpdate.completionstatus, taskUpdate]).then ((result) => {
         res.sendStatus(200);
     }).catch((error) => {
         console.log(`Error in PUT ${error}`);
