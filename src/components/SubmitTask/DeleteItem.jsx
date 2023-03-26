@@ -7,6 +7,7 @@ import { useState, useEffect} from 'react';
 // after the assignment is compelete 
 
 function DeleteItem({taskList, fetchTaskList}) {
+    const [completed, setCompleted] = useState(false);
 
     const removeTask = (e) => {
         console.log(`removeTask ${taskList.id}`);
@@ -17,16 +18,31 @@ function DeleteItem({taskList, fetchTaskList}) {
             alert('Something went wrong!');
         })
     }
-    const completeTask = (complete) => {
+    const completeTask = () => {
         console.log(`completeTask ${taskList.id}`);
         axios.put(`/todo/${taskList.id}`).then((response) => {
+            setCompleted(true);
             fetchTaskList();
         }).catch((error) => {
-            console.log(`Error in complettask ${error}`);
-            alert('Something went wong!');
+            console.log(`Error in completetask ${error}`);
+            alert('Something went wrong!');
         })
     }
 
+    // let completionstatus;
+    // if (taskList.completionstatus === true) {
+    //     completionstatus = "Yes"
+    // } else if (taskList.completionstatus === false) {
+    //     completionstatus = "No"
+    // }
+    
+    // const completedTaskStrike = () => {
+    //     if (completionstatus === "Yes") {
+    //         return 'line-through';
+    //     } else {
+    //         return 'none'
+    //     }
+    // };
     
 
     return (
@@ -37,7 +53,7 @@ function DeleteItem({taskList, fetchTaskList}) {
             Description: {taskList.description}
             <br />
             <button onClick={(e) => removeTask(e)}>Delete</button>
-            <button>Completed</button>
+            {/* <button onClick={() => completeTask()}>Completed</button> */}
         </li>
         <br />
         </>
@@ -45,3 +61,6 @@ function DeleteItem({taskList, fetchTaskList}) {
 }
 
 export default DeleteItem
+
+
+// style={{ textDecoration: completedTaskStrike()}}
