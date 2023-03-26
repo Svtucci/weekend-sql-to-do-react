@@ -33,5 +33,17 @@ router.post('/', (req, res) => {
 
 
 // DELETE will delete w/e id we choose 
+router.delete('/:id', (req, res) => {
+    console.log('DELETE Request made for /tasks');
+    const deleteTask = `DELETE FROM "taskList" WHERE "id" = $1;`
+    pool.query(deleteTask, [req.params.id]).then((result) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log(`Error making database query ${deleteTask}`, error);
+        res.sendStatus(500);
+    })
+})
+
+
 
 module.exports = router;

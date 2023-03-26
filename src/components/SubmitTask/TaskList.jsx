@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import SubmitTask from './SubmitTask.jsx';
 import { useState, useEffect} from 'react';
+import DeleteItem from './DeleteItem.jsx'; 
 
 
 function TaskList () {
@@ -38,13 +39,16 @@ function TaskList () {
             <ul>
                 {
                     listOfTasks.map((taskList) => (
-                        <li key={taskList.id}>
-                           Task:{taskList.name} 
-                           Description: {taskList.status}
-                        </li>
+                       <DeleteItem 
+                            key={taskList.id}
+                            taskList={taskList}
+                            fetchTaskList={fetchTaskList}
+                       />
                     ))
                 }
             </ul>
+
+
         </div>
     )
 }

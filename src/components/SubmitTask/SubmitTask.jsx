@@ -25,10 +25,13 @@ function SubmitTask({taskName, setTaskName, taskDescription, setTaskDescription,
                    id={taskName}
                    onChange={(e) => setTaskName(e.target.value)} />
                    <br />
+                   <br />
             Description:
             <input type="text"
                    id={taskDescription}
                    onChange={(e) => setTaskDescription(e.target.value)} />
+                   <br />
+                   <br />
             <button type="submit">Add Task</button>
         </form>
 
