@@ -14,11 +14,9 @@ function SubmitTask({taskName,
         axios.post('/todo', {
             task: taskName,
             description: taskDescription,
-            completionstatus: false, 
+            completionstatus: false,
         }).then((response) => {
-            console.log(taskName)
-            setTaskName('');
-            console.log(taskName); 
+            setTaskName(''); 
             setTaskDescription('');
             setCompletionStatus('');
             fetchTaskList();
@@ -27,18 +25,21 @@ function SubmitTask({taskName,
             alert('Something went wrong')
         })
     }
+
     return(
 
         <form onSubmit={submitForm}>
             Task:
             <input type="text"
                    id={taskName}
+                   value={taskName}
                    onChange={(e) => setTaskName(e.target.value)} />
                    <br />
                    <br />
             Description:
             <input type="text"
                    id={taskDescription}
+                   value={taskDescription}
                    onChange={(e) => setTaskDescription(e.target.value)} />
                    <br />
                    <br />
