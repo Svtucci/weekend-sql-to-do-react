@@ -2,7 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import { useState, useEffect} from 'react';
 
-
+// This is named delete, but it moreso became the DELETE and COMPLETED compoent for the buttons 
+// as I was getting confused on how to separate the two, I will complete it here and try to move 
+// after the assignment is compelete 
 
 function DeleteItem({taskList, fetchTaskList}) {
     const removeTask = (e) => {
@@ -14,6 +16,8 @@ function DeleteItem({taskList, fetchTaskList}) {
             alert('Something went wrong!');
         })
     }
+    
+
     return (
         <>
         <li>
@@ -22,7 +26,7 @@ function DeleteItem({taskList, fetchTaskList}) {
             Description: {taskList.description}
             <br />
             <button onClick={(e) => removeTask(e)}>Delete</button>
-            
+            <button onclick>Completed</button>
         </li>
         <br />
         </>

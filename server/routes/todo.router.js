@@ -30,6 +30,11 @@ router.post('/', (req, res) => {
 });
 
 // PUT will take updated info from DOM, send to DB to be udpated and then resent to DOM
+router.put('/:id', (req, res) => {
+    console.log('PUT request made for /tasks');
+    
+})
+
 
 
 // DELETE will delete w/e id we choose 
