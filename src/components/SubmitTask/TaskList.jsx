@@ -9,6 +9,7 @@ function TaskList () {
     const [taskName, setTaskName] = useState('');
     const [taskDescription, setTaskDescription] = useState('');
     const [listOfTasks, setListOfTasks] = useState([]);
+    const [completionStatus, setCompletionStatus] = useState('')
 
     const fetchTaskList = () => {
         axios.get('/todo').then((response) => {
@@ -32,6 +33,8 @@ function TaskList () {
             taskDescription={taskDescription}
             setTaskDescription={setTaskDescription}
             fetchTaskList={fetchTaskList}
+            completionStatus={completionStatus}
+            setCompletionStatus={setCompletionStatus}
             /> 
 
             <h2>Task-List</h2>
@@ -47,8 +50,6 @@ function TaskList () {
                     ))
                 }
             </ul>
-
-
         </div>
     )
 }

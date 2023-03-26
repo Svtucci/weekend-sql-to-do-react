@@ -19,9 +19,9 @@ router.post('/', (req, res) => {
     console.log('POST Request made for /tasks');
     console.log(req.body);
     const task = req.body;
-    let queryTasks = `INSERT INTO "taskList" ("task", "description")
-                      VALUES ($1, $2)`;
-    pool.query(queryTasks, [task.task, task.description]).then ((result) => {
+    let queryTasks = `INSERT INTO "taskList" ("task", "description", "completionstatus")
+                      VALUES ($1, $2, $3)`;
+    pool.query(queryTasks, [task.task, task.description, task.completionstatus]).then ((result) => {
         res.sendStatus(201);
     }).catch((error) => {
         console.log(`Error in POST ${error}`);
@@ -30,9 +30,18 @@ router.post('/', (req, res) => {
 });
 
 // PUT will take updated info from DOM, send to DB to be udpated and then resent to DOM
+// May need two put requests. 
+
 router.put('/:id', (req, res) => {
     console.log('PUT request made for /tasks');
-    
+    const taskUpdate = req.params.id;
+    const queryText = `UPDATE "taskList" SET "task" = $1, "description" = $2, "completionstatus" = $3 WHERE "id" = $4`; 
+    pool.query(queryText, [taskUpdate.task, taskUpdate.description, taskUpdate.completionstatus, taskId]).then ((result) => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log(`Error in PUT ${error}`);
+        res.sendStatus(500); 
+    })
 })
 
 

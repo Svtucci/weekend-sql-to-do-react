@@ -2,15 +2,23 @@ import React from 'react';
 import axios from 'axios';
 import TaskList from './TaskList.jsx'
 
-function SubmitTask({taskName, setTaskName, taskDescription, setTaskDescription, fetchTaskList}) {
+function SubmitTask({taskName, 
+                    setTaskName, 
+                    taskDescription, 
+                    setTaskDescription, 
+                    fetchTaskList,
+                    completionStatus,
+                    setCompletionStatus}) {
     const submitForm = (e) => {
         e.preventDefault();
         axios.post('/todo', {
             task: taskName,
             description: taskDescription,
+            completionstatus: false, 
         }).then((response) => {
             setTaskName('');
             setTaskDescription('');
+            setCompletionStatus('');
             fetchTaskList();
         }).catch((error) => {
             console.log(`Error in POST ${error}`)
