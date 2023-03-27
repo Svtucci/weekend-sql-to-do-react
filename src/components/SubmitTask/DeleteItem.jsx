@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect} from 'react';
+import '../App/App.css';
 
 // This is named delete, but it moreso became the DELETE and COMPLETED compoent for the buttons 
 // as I was getting confused on how to separate the two, I will complete it here and try to move 
@@ -38,21 +39,23 @@ function DeleteItem({taskList, fetchTaskList}) {
     
     const completedTaskStrike = () => {
         if (completionstatus === "Yes") {
-            return 'line-through';
+            return 'red'
         } else {
-            return 'none'
+            return '';
         }
     };
     
 
+
     return (
         <>
-        <li style={{textDecoration: completedTaskStrike()}}>
+        <li style={{backgroundColor: completedTaskStrike()}}>
             Task:{taskList.task} 
             <br />
             Description: {taskList.description}
             <br />
             Completed: {completionstatus}
+            <br />
             <button onClick={(e) => removeTask(e)}>Delete</button>
             <button onClick={() => completeTask()}>Completed</button>
         </li>

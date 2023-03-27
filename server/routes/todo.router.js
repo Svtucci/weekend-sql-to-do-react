@@ -51,8 +51,6 @@ router.put('/:id', (req, res) => {
     })
 })
 
-
-
 // DELETE will delete w/e id we choose 
 router.delete('/:id', (req, res) => {
     console.log('DELETE Request made for /tasks');

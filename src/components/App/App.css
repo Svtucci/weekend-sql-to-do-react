@@ -2,7 +2,6 @@
   text-align: center;
 }
 
-
 .App-header {
   background-color: #222;
   text-align: center;
@@ -18,6 +17,24 @@
 .App-intro {
   font-size: large;
 }
+
+li {
+  padding: 5px;
+  display: inline-block;
+  text-align: center;
+}
+
+form {
+  background-color: rgb(119, 119, 194);
+  display: inline-block;
+  text-align: center;
+}
+
+#root {
+  text-align: center;
+}
+
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

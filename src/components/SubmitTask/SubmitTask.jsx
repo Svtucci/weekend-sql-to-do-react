@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import TaskList from './TaskList.jsx'
+import '../App/App.css';
 
 function SubmitTask({taskName, 
                     setTaskName, 

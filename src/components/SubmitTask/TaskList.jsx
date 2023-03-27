@@ -3,6 +3,7 @@ import axios from 'axios';
 import SubmitTask from './SubmitTask.jsx';
 import { useState, useEffect} from 'react';
 import DeleteItem from './DeleteItem.jsx'; 
+import '../App/App.css';
 
 
 function TaskList () {
