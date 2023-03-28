@@ -29,4 +29,3 @@ Thanks to Prime Digital Academy who equipped and helped me to make this applicat
 If you have suggestions or issues, please email me at steve.vertucci@gmail.com
 
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
